@@ -8,8 +8,19 @@
 
 	<h:body>
 		<h:form>
-			<h:commandButton action="#{testeCampanhaBean.AgoraVaiBO}" value="Teste chamando BO"></h:commandButton>
-			<h:outputText value="#{testeCampanhaBean.descricao}"></h:outputText>
+			<h:commandButton action="#{testeCampanhaBean.AgoraVaiBO}" value="teste Listar campanhas"></h:commandButton>
+			<br></br>
+			<h:commandButton action="#{testeCampanhaBean.BuscarCharacter}" value="teste buscar character"></h:commandButton>			
+			<br></br>
+			<h:commandButton action="#{testeCampanhaBean.BuscarGameCombate}" value="teste buscar game - combate"></h:commandButton>			
+			<br></br>
+			<h:commandButton action="#{testeCampanhaBean.BuscarGameUser}" value="teste buscar gameUser"></h:commandButton>			
+			<br></br>
+			<h:commandButton action="#{testeCampanhaBean.BuscarItem}" value="teste buscar item"></h:commandButton>			
+			<br></br>
+			<h:commandButton action="#{testeCampanhaBean.BuscarCenario}" value="teste buscar cenario"></h:commandButton>			
+			<br></br>
+			<h:outputText value="#{testeCampanhaBean.descricaoRetorno}"></h:outputText>
 		</h:form>
 	</h:body>
 
