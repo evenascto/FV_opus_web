@@ -14,11 +14,8 @@ import com.futurevision.rpg.entity.Campaign;
 @ManagedBean
 @RequestScoped
 public class TesteCampanhaBean {
-
-	private CampaignBOI campaignBO;
-	
 	@EJB 
-	private CampaignDAOI campaignDAO;
+	private CampaignBOI campaignBO;
 	
 	private String descricao;
 
@@ -34,14 +31,13 @@ public class TesteCampanhaBean {
 		 * */
 		
 		//List<Campaign> campanhas = campaignDAO.listAll();
-		campaignBO = new CampaignBO();
 		List<Campaign> campanhas = campaignBO.getAllCampaign();
 		if(campanhas.size() > 0) 
-			descricao = campaignDAO.listAll().get(0).getDescription();
+			descricao = campanhas.get(0).getDescription();
 		else 
 			descricao = "NENHUMA CAMPANHA CADASTRADA";
 	}
-
+	/*
 	public void AgoraVaiComDAO() throws Exception {
 		List<Campaign> campanhas = campaignDAO.listAll();
 		if(campanhas.size() > 0) 
@@ -49,7 +45,7 @@ public class TesteCampanhaBean {
 		else 
 			descricao = "NENHUMA CAMPANHA CADASTRADA";
 	}
-
+	*/
 	
 	public String getDescricao() {
 		return descricao;
