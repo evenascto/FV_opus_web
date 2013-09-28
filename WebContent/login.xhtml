@@ -1,0 +1,39 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core">
+
+<ui:composition template="_templateMaster.xhtml">
+	<ui:define name="main_content">
+		<div id="templatemo_content_jogo" style="height: 500px;">
+			<div class="footer_box m_right"
+				style="left: 50%; top: 50%; margin-left: -100px; margin-top: -100px; height: 160px;">
+				<div class="footer_bottom"></div>
+				<h4>Login</h4>
+				<div class="footer_box_content">
+					<h:messages></h:messages>
+					<h:form>
+						<h:panelGrid border="0" columns="2">
+							<h:outputText value="Usuário: "></h:outputText>
+							<h:inputText validator="#{loginBean.validaDado}" required="true"
+								value="" id="txtUsuario">
+								<f:validateLength minimum="4" maximum="10"></f:validateLength>
+							
+							</h:inputText>
+							<h:outputText value="Senha: "></h:outputText>
+							<h:inputSecret value="" id="txtSenha">
+								<f:validateLength minimum="4" maximum="10"></f:validateLength>
+							</h:inputSecret>
+							<h:commandButton value="Logar" 
+								id="btnLogar"></h:commandButton>
+						</h:panelGrid>
+					</h:form>
+				</div>
+			</div>
+		</div>
+	</ui:define>
+</ui:composition>
+</html>

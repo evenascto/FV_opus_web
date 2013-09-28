@@ -1,0 +1,70 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+
+<f:view>
+	<h:head>
+		<title>futureVision</title>
+		<h:outputStylesheet name="style.css" library="css"></h:outputStylesheet>
+		<meta http-equiv="Pragma" content="no-cache" />
+	</h:head>
+
+	<h:body>
+
+		<div id="templatemo_container">
+
+			<ui:insert name="header">
+				<div id="templatemo_menu">
+					<ul>
+						<li><a href="#" class="current fast">Home</a></li>
+						<li><h:outputLink value="Empresa.xhtml">A Empresa</h:outputLink></li>
+						<li><h:outputLink value="Jogo.xhtml">Jogo</h:outputLink></li>					
+						<li><a href="#">Contato</a></li>
+						<li><a href="#">Quero Jogar</a></li>
+					</ul>
+				</div>
+				<div id="templatemo_banner_bar_jogo">
+					<ui:insert name="menu">
+						<div id="site_title">
+							<h1>
+								<a href="#">Future Vision</a>
+							</h1>
+						</div>
+					</ui:insert>
+				</div>
+			</ui:insert>
+
+			<div id="main_content">
+				<ui:insert name="main_content">
+					<div id="right_content">Conteúdo Padrão!</div>
+					<div style="clear: both;"></div>
+				</ui:insert>
+			</div>
+			<!--fim do main content-->
+
+			<div id="footer">
+				<ui:insert name="footer">
+					<div id="templatemo_divisao2">
+						<div id="site_title">
+							<h1>
+								<a href="#"></a>
+							</h1>
+						</div>
+					</div>
+					<div id="templatemo_footer_bar_jogo">
+						Copyright © 2013 <a href="#">Future Vision</a> |
+					</div>
+				</ui:insert>
+			</div>
+
+		</div>
+		<!--fim main container-->
+
+	</h:body>
+</f:view>
+</html>

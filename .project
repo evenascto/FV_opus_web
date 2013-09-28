@@ -3,6 +3,7 @@
 	<name>FV_opus_WEB</name>
 	<comment></comment>
 	<projects>
+		<project>FV_opus_EJB</project>
 	</projects>
 	<buildSpec>
 		<buildCommand>
