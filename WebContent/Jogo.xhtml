@@ -4,55 +4,126 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:h="http://java.sun.com/jsf/html"
-	xmlns:f="http://java.sun.com/jsf/core">
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
 
 <ui:composition template="_templateMaster.xhtml">
 	<ui:define name="main_content">
-		<div id="templatemo_content_jogo">
+		<h:form id="formGame">
+			<div id="templatemo_content_jogo">
+				<div class="footer_box_big m_right"
+					style="margin-top: 1%; height: 400px; width: 660px;">
+					<div class="footer_box_content">
 
-			<div class="footer_box_content">
-				<div class="cleaner_h10"></div>
-				<h:inputTextarea  styleClass="footer_box_big"
-					style="margin-top: 1%; height: 360px; width: 650px;"></h:inputTextarea>
-			</div>
+						<p:outputLabel value="#{gameplayMB.scenario.description}" />
+					</div>
 
-			<div class="footer_box m_right"
-				style="margin-left: 75%; margin-top: -42%; height: 250px;">
-				<div class="footer_bottom"></div>
-				<h4>Status</h4>
-				<div class="footer_box_content">
-					<div class="cleaner_h10"></div>
+					<!-- Para testes -->
+					<div class="footer_box_content">
+
+						<p:dataList value="#{gameplay.scenario.scenarioSelections}"
+							var="selection" itemType="disc">
+							<p:commandLink id="btEscolha" update="@form"
+								actionListener="#{gameplayMB.selectScenario(selection)}">
+								<h:outputText value="#{selection.description}" />
+							</p:commandLink>
+						</p:dataList>
+					</div>
+
+				</div>
+
+				<div class="footer_box m_right"
+					style="margin-left: 75%; margin-top: -46.5%;">
+					<div class="footer_bottom"></div>
+
+					<h4>Status</h4>
+
+					<div class="footer_box_content">
+						<p:dataGrid columns="2" style="width:100%">
+
+							<p:outputLabel value="Nome: " />
+							<p:outputLabel for="" value="#{gameplayMB.character.name}" />
+
+							<p:outputLabel value="Destreza: " />
+							<p:outputLabel
+								value="#{gameplayMB.character.dextery.value}/#{gameplayMB.character.dextery.total}" />
+
+							<p:outputLabel value="Vida: " />
+							<p:outputLabel
+								value="#{gameplayMB.character.life.value}/#{gameplayMB.character.life.total}" />
+
+							<p:outputLabel value="Sorte: " />
+							<p:outputLabel
+								value="#{gameplayMB.character.luck.value}/#{gameplayMB.character.luck.total}" />
+
+							<p:outputLabel value="XP: " />
+							<p:outputLabel value="#{gameplayMB.character.xp}" />
+
+						</p:dataGrid>
+					</div>
+
+				</div>
+				<div class="footer_box m_right"
+					style="margin-left: 75%; margin-bottom: 10px; margin-top: -6%; height: 300px;">
+					<div class="footer_bottom"></div>
+
+					<h4>Inventário</h4>
+
+					<div class="footer_box_content">
+						<p:dataGrid var="chaIte" value="#{gameplayMB.character.chaItes}"
+							columns="3" rows="12" paginator="true"
+							paginatorTemplate="{PreviousPageLink} {CurrentPageReport} {NextPageLink}">
+
+							<p:commandLink id="btItemMenu" update="@parent">
+								<h:outputText value="#{chaIte.item.nome}" />
+							</p:commandLink>
+
+							<p:menu overlay="true" trigger="btItemMenu" my="left top"
+								at="left bottom">
+								<p:submenu label="Ação">
+									<p:menuitem value="Usar"
+										actionListener="#{gameplayMB.useItem(chaIte.item)}"
+										update="@parent" icon="ui-icon-star" />
+									<p:menuitem value="Descartar"
+										actionListener="#{gameplayMB.removeItem(chaIte.item)}"
+										update="@parent" icon="ui-icon-close" />
+								</p:submenu>
+							</p:menu>
+
+						</p:dataGrid>
+					</div>
+
+				</div>
+				<div class="footer_box m_right"
+					style="margin-left: 50.5%; margin-top: -28%; height: 230px; width: 200px;">
+					<div class="footer_bottom" style="width: 200px;"></div>
+
+					<h5>Escolhas</h5>
+
+					<div class="footer_box_content">
+
+						<p:dataList value="#{gameplayMB.choices}" var="choice">
+							<p:commandLink id="btEscolha" update="@form"
+								actionListener="#{gameplayMB.makeChoice(choice)}">
+								<h:outputText value="#{choice}" />
+							</p:commandLink>
+						</p:dataList>
+					</div>
+
+				</div>
+				<h:graphicImage visible="false"
+					name="templatemo_banner_Horizontal.jpg"
+					style="margin-top:-35%;width:70%;" library="images"></h:graphicImage>
+				<div class="cleaner"></div>
+				<div id="templatemo_divisao2">
+					<div id="site_title">
+						<h1>
+							<a href="#"></a>
+						</h1>
+					</div>
 				</div>
 			</div>
-
-			<div class="footer_box m_right"
-				style="margin-left: 75%; margin-bottom: 10px; margin-top: -12%; height: 350px;">
-				<div class="footer_bottom"></div>
-				<h4>Inventário</h4>
-				<div class="footer_box_content">
-					<div class="cleaner_h10"></div>
-				</div>
-			</div>
-			<div class="footer_box_big m_right"
-				style="margin-top: -28%; height: 220px; width: 440px;">
-				<div class="footer_box_content">
-					<div class="cleaner_h10"></div>
-				</div>
-			</div>
-			<div class="footer_box m_right"
-				style="margin-left: 50.5%; margin-top: -28%; height: 230px; width: 200px;">
-				<div class="footer_bottom" style="width: 200px;"></div>
-				<h5>Escolhas</h5>
-				<div class="footer_box_content">
-					<div class="cleaner_h10"></div>
-				</div>
-			</div>
-			<h:graphicImage visible="false"
-				name="templatemo_banner_Horizontal.jpg"
-				style="margin-top:-34%;width:70%;" library="images"></h:graphicImage>
-			<div class="cleaner"></div>
-
-		</div>
+		</h:form>
 	</ui:define>
 </ui:composition>
 </html>
